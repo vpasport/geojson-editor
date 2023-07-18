@@ -1,0 +1,63 @@
+.panorama-marker {
+  &-container {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    &_small {
+      width: 24px;
+      height: 24px;
+
+      & > .panorama-marker {
+        &_dot {
+          background-color: var(--gray-unchangeable-0);
+          width: 14px;
+          height: 14px;
+        }
+
+        &_icon {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      & > .panorama-marker {
+        &_dot {
+          background-color: var(--interactive-default);
+          border-color: var(--gray-unchangeable-0);
+        }
+      }
+    }
+  }
+
+  &_dot {
+    width: 16px;
+    height: 16px;
+
+    background-color: var(--gray-unchangeable-0);
+    border-color: var(--interactive-default);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+
+    transition: background-color 0.16s, border-color 0.16s;
+  }
+
+  &_icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 58px;
+    height: 58px;
+  }
+}

@@ -3,24 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui-kraud/react": "^2.5.22",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@popperjs/core": "^2.11.8",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@turf/bbox": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/supercluster": "^7.1.0",
+    "classnames": "^2.3.2",
+    "framer-motion": "^10.12.22",
+    "lodash": "^4.17.21",
+    "mapbox-gl": "^2.13.0",
+    "maplibre-gl": "^2.4.0",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.21",
+    "react-popper": "^2.3.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.63.6",
+    "supercluster": "^8.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -28,16 +45,17 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie 11",
+    "not chrome < 51",
+    "not safari < 10",
+    "not android < 51"
+  ],
+  "devDependencies": {
+    "@types/lodash": "^4.14.195",
+    "react-app-rewire-alias": "^1.1.7",
+    "react-app-rewired": "^2.2.1"
   }
 }

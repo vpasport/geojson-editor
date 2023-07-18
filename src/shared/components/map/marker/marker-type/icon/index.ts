@@ -1,0 +1,1 @@
+export { IconMarker } from './icon'

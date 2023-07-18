@@ -1,0 +1,51 @@
+.tooltip {
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 1000;
+
+  opacity: 0;
+
+  transition: opacity var(--transition-default-duration);
+
+  &_visible {
+    opacity: 1;
+  }
+}
+
+.cluster-spread {
+  opacity: 0.55;
+  filter: brightness(0.5);
+
+  &-content {
+    $gap: 40px;
+
+    // pointer-events: none;
+
+    display: flex;
+    flex-flow: row wrap;
+    gap: $gap;
+    justify-content: center;
+
+    min-width: 240px;
+    max-width: 560px;
+
+    & > * {
+      pointer-events: all;
+    }
+
+    &_rows {
+      &_2 {
+        & > div {
+          flex: calc(50% - (($gap) / 2));
+        }
+      }
+
+      &_3 {
+        & > div {
+          flex: calc(33% - (($gap * 3) / 3));
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.cluster {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  transition: opacity 0.16s;
+
+  &-text {
+    z-index: 3;
+
+    color: var(--gray-unchangeable-0);
+  }
+
+  &-background {
+    content: '';
+
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 40px;
+    height: 40px;
+
+    opacity: 0.6;
+    border-radius: 50%;
+  }
+
+  &_translucent {
+    opacity: 0.6;
+  }
+
+  &_hovered {
+    opacity: 1;
+    & > .cluster-background {
+      animation: pulse 1.2s infinite;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    opacity: 1;
+    filter: brightness(0.6);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    width: 40px;
+    height: 40px;
+  }
+  30% {
+    width: 46px;
+    height: 46px;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+  }
+}

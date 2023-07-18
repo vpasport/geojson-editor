@@ -1,0 +1,213 @@
+$path_default: path(
+  'M98 80C98 88.7435 91.7658 96.031 83.5 97.6599C82.6851 97.8205 81.8504 97.9261 81 97.9727C80.669 97.9908 80.3356 98 80 98C79.6644 98 79.331 97.9908 79 97.9727C78.1496 97.9261 77.3149 97.8205 76.5 97.6599C68.2342 96.031 62 88.7435 62 80C62 70.0589 70.0589 62 80 62C89.9411 62 98 70.0589 98 80Z'
+);
+$path_hovered: path(
+  'M101 67C101 77.2008 93.7268 85.7029 84.0833 87.6033C84.0833 87.6033 83 88 82 89.5C81.6608 90.0089 80.9763 91 80 91C79.0237 91 78.3019 90.0319 78 89.5C77.1667 88.0319 75.9167 87.6033 75.9167 87.6033C66.2732 85.7029 59 77.2008 59 67C59 55.402 68.402 46 80 46C91.598 46 101 55.402 101 67Z'
+);
+$path_selected: path(
+  'M108 37C108 50.6011 98.3024 61.9371 85.4444 64.471C83.5 66.5 83.5988 68.5 82 71.5C81.4444 72.5425 80.522 73 80 73C79.478 73 78.5556 72.5425 78 71.5C76.4506 68.5925 77 66.5 74.5556 64.471C61.6976 61.9371 52 50.6011 52 37C52 21.536 64.536 9 80 9C95.464 9 108 21.536 108 37Z'
+);
+$path_dot: path(
+  'M88 80C88 83.886 85.2293 87.1249 81.5556 87.8489C81.1934 87.9202 80.8224 87.9672 80.4445 87.9879C80.2973 87.9959 80.1491 88 80 88C79.8509 88 79.7027 87.9959 79.5556 87.9879C79.1776 87.9672 78.8066 87.9202 78.4444 87.8489C74.7707 87.1249 72 83.886 72 80C72 75.5817 75.5817 72 80 72C84.4183 72 88 75.5817 88 80Z'
+);
+$transition-duration: 0.08s linear;
+
+.map-marker {
+  outline: none;
+
+  transition: opacity 0.16s ease;
+  &-container {
+    position: relative;
+
+    display: block;
+
+    width: 40px;
+    height: 40px;
+  }
+  &:focus {
+    outline: none;
+  }
+
+  &-text {
+    position: absolute;
+    top: calc(50% + 18px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    overflow: hidden;
+    display: box;
+    display: -webkit-box;
+
+    width: max-content;
+    max-width: 168px;
+    margin-bottom: 4px;
+    padding: 4px 4px 0;
+
+    font-weight: 600;
+    color: var(--gray-unchangeable-0);
+    text-align: center;
+    text-overflow: ellipsis;
+    text-shadow: -1px 0px 0px var(--gray-unchangeable-0),
+      1px 0px 0px var(--gray-unchangeable-0), 0px -1px 0px var(--gray-unchangeable-0),
+      0px 1px 0px var(--gray-unchangeable-0);
+    word-break: break-word;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    &_sublayer {
+      display: none;
+
+      text-shadow: none;
+
+      filter: brightness(0.76);
+    }
+  }
+
+  &-svg {
+    pointer-events: none;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-circle {
+      will-change: d;
+
+      fill: var(--gray-unchangeable-0);
+
+      transition: all 0.16s ease;
+    }
+    &-path {
+      will-change: d;
+
+      d: $path_default;
+      stroke: var(--gray-unchangeable-0);
+
+      transition: $transition-duration;
+    }
+  }
+
+  &-icon {
+    will-change: transform, opacity;
+
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 28px;
+    color: var(--gray-unchangeable-0);
+
+    opacity: 1;
+
+    transition: opacity 0.16s ease, top $transition-duration;
+  }
+
+  &_dot {
+    & > .map-marker-svg {
+      & > .map-marker-svg-path {
+        d: $path_dot;
+      }
+    }
+
+    & > .map-marker-text {
+      display: none;
+    }
+
+    & > .map-marker-icon {
+      opacity: 0;
+    }
+  }
+
+  &_translucent {
+    opacity: 0.6;
+  }
+
+  &_selected {
+    z-index: 1000;
+
+    opacity: 1 !important;
+    & > .map-marker-svg {
+      & > .map-marker-svg-path {
+        d: $path_selected;
+        stroke-width: 0;
+      }
+    }
+
+    & > .map-marker-text {
+      display: none;
+
+      & > &_sublayer {
+        display: none !important;
+      }
+    }
+
+    & > .map-marker-icon {
+      top: calc(-50% - 5px);
+
+      font-size: 44px;
+
+      opacity: 1;
+    }
+  }
+
+  &-container:not(.map-marker_selected).map-marker_hovered {
+    opacity: 1 !important;
+    & > .map-marker-svg {
+      & > .map-marker-svg {
+        &-path {
+          d: $path_hovered;
+        }
+      }
+    }
+    & > .map-marker-icon {
+      top: calc(50% - 15px);
+
+      font-size: 32px;
+
+      opacity: 1;
+    }
+  }
+  &-container.map-marker_hovered {
+    opacity: 1 !important;
+  }
+
+  &-container:not(.map-marker_selected).map-marker_translucent {
+    opacity: 1;
+  }
+
+  @media all and (min-width: 768px) {
+    &:hover {
+      .map-marker-text_sublayer {
+        display: none;
+      }
+    }
+
+    &-container {
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:not(.map-marker_selected):hover {
+        opacity: 1 !important;
+        & > .map-marker-svg {
+          & > .map-marker-svg {
+            &-path {
+              d: $path_hovered;
+            }
+          }
+        }
+        & > .map-marker-icon {
+          top: calc(50% - 15px);
+
+          font-size: 32px;
+
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

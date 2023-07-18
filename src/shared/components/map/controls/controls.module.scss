@@ -1,0 +1,49 @@
+.controls {
+  position: absolute;
+
+  &-top {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &-left,
+    &-right {
+      top: 20px;
+    }
+
+    &-left {
+      left: 20px;
+    }
+    &-right {
+      right: 20px;
+    }
+  }
+
+  &-bottom {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &-left,
+    &-right {
+      bottom: 20px;
+    }
+
+    &-left {
+      left: 20px;
+    }
+
+  }
+
+  &-left {
+    top: 45%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  &-right {
+    top: 45%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+}

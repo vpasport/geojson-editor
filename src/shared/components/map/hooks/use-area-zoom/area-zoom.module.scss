@@ -1,0 +1,17 @@
+.box {
+  pointer-events: none;
+
+  position: absolute;
+
+  background: red;
+  background: rgba(#fff, 0.3);
+  border: 1px dashed var(--interactive-active);
+  border-radius: 4px;
+}
+
+body[data-theme='light'] .area-zoom {
+  cursor: url('../../../../icons/cursor-select_light.svg'), auto !important;
+}
+body[data-theme='dark'] .area-zoom {
+  cursor: url('../../../../icons/cursor-select_dark.svg'), auto !important;
+}
